@@ -1,4 +1,3 @@
-
 import { Injectable } from '@angular/core';
 import { GoogleGenAI } from '@google/genai';
 import { environment } from '../environments/environment';
@@ -14,7 +13,7 @@ export class GeminiService {
     // Do not hardcode the API key here.
     const apiKey = process.env.API_KEY;
     if (!apiKey) {
-      throw new Error("API_KEY environment variable not set.");
+      throw new Error("لم يتم تعيين متغير البيئة API_KEY.");
     }
     this.ai = new GoogleGenAI({ apiKey });
   }
@@ -22,18 +21,18 @@ export class GeminiService {
   async generateBioSummary(userData: any, userRepos: any[]): Promise<string> {
     const repoNames = userRepos.map(repo => repo.name).join(', ');
     const prompt = `
-      Based on the following GitHub profile data, generate a professional and engaging summary (around 2-3 sentences) suitable for a tech recruiter or hiring manager.
-      Highlight potential key skills, interests, and project experience based on the repository names and user bio.
-      Keep the tone positive and forward-looking.
+      بناءً على بيانات ملف GitHub التالية، قم بإنشاء ملخص احترافي وجذاب (حوالي 2-3 جمل) مناسب لمسؤول توظيف تقني أو مدير توظيف.
+      سلط الضوء على المهارات الرئيسية المحتملة والاهتمامات وخبرة المشاريع بناءً على أسماء المستودعات والسيرة الذاتية للمستخدم.
+      حافظ على نبرة إيجابية وتطلعية.
 
-      **Profile Data:**
-      - **Name:** ${userData.name}
-      - **Bio:** ${userData.bio || 'Not provided.'}
-      - **Followers:** ${userData.followers}
-      - **Public Repositories Count:** ${userData.public_repos}
-      - **Recent Repository Names:** ${repoNames}
+      **بيانات الملف الشخصي:**
+      - **الاسم:** ${userData.name}
+      - **السيرة الذاتية:** ${userData.bio || 'غير متوفرة.'}
+      - **المتابعون:** ${userData.followers}
+      - **عدد المستودعات العامة:** ${userData.public_repos}
+      - **أسماء المستودعات الأخيرة:** ${repoNames}
 
-      Generate the summary now.
+      قم بإنشاء الملخص الآن.
     `;
 
     try {
@@ -44,7 +43,7 @@ export class GeminiService {
       return response.text;
     } catch (error) {
       console.error('Error generating summary with Gemini API:', error);
-      return 'Could not generate AI summary due to an error. Please check the console.';
+      return 'تعذر إنشاء ملخص بالذكاء الاصطناعي بسبب خطأ. يرجى التحقق من وحدة التحكم.';
     }
   }
 }

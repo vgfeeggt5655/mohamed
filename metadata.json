@@ -1,5 +1,5 @@
 {
   "name": "GitHub Profile Finder AI",
-  "description": "An Angular application that fetches GitHub user profiles using the GitHub API and generates a professional summary using the Gemini API.",
+  "description": "تطبيق أنجولار لجلب ملفات مستخدمي GitHub باستخدام واجهة برمجة تطبيقات GitHub وإنشاء ملخص احترافي باستخدام واجهة برمجة تطبيقات Gemini.",
   "requestFramePermissions": []
 }

@@ -1,4 +1,3 @@
-
 import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { CommonModule, formatDate } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -32,7 +31,7 @@ export class AppComponent {
 
   searchUser(): void {
     if (!this.username() || this.username().trim() === '') {
-      this.error.set('Please enter a GitHub username.');
+      this.error.set('الرجاء إدخال اسم مستخدم GitHub.');
       return;
     }
 
@@ -69,7 +68,7 @@ export class AppComponent {
       const summary = await this.geminiService.generateBioSummary(this.userData(), this.userRepos());
       this.geminiSummary.set(summary);
     } catch (e) {
-      this.geminiSummary.set('Failed to generate summary.');
+      this.geminiSummary.set('فشل إنشاء الملخص.');
     } finally {
       this.geminiLoading.set(false);
     }

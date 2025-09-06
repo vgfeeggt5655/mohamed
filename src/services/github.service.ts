@@ -1,4 +1,3 @@
-
 import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
@@ -24,15 +23,15 @@ export class GithubService {
   }
 
   private handleError(error: any) {
-    let errorMessage = 'An unknown error occurred!';
+    let errorMessage = 'حدث خطأ غير معروف!';
     if (error.status === 404) {
-      errorMessage = `User not found. Please check the username and try again.`;
+      errorMessage = `المستخدم غير موجود. يرجى التحقق من اسم المستخدم والمحاولة مرة أخرى.`;
     } else if (error.error instanceof ErrorEvent) {
       // Client-side errors
-      errorMessage = `Error: ${error.error.message}`;
+      errorMessage = `خطأ: ${error.error.message}`;
     } else {
       // Server-side errors
-      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+      errorMessage = `رمز الخطأ: ${error.status}\nالرسالة: ${error.message}`;
     }
     return throwError(() => new Error(errorMessage));
   }
