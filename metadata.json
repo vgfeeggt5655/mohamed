@@ -1,0 +1,5 @@
+{
+  "name": "GitHub Profile Finder AI",
+  "description": "An Angular application that fetches GitHub user profiles using the GitHub API and generates a professional summary using the Gemini API.",
+  "requestFramePermissions": []
+}
